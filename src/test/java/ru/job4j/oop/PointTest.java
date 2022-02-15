@@ -31,4 +31,13 @@ public class PointTest {
         double rsl = a.distance(b);
         Assert.assertEquals(expected, rsl, 0.01);
     }
+
+    @Test
+    public void when123to043then2point24() {
+        Point a = new Point(1, 2, 3);
+        Point b = new Point(0, 4, 3);
+        double expected = 2.24;
+        double rsl = a.distance3d(b);
+        Assert.assertEquals(rsl, expected, 0.01);
+    }
 }
