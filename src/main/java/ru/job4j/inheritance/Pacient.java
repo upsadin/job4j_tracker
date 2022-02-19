@@ -4,8 +4,6 @@ public class Pacient {
     private char sex;
     private String pname;
 
-    public Pacient() { }
-
     public Pacient(char sex, String name) {
         this.sex = sex;
         pname = name;
