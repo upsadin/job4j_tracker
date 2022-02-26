@@ -32,7 +32,7 @@ public class Tracker {
 
     public Item findById(int id) {
         int index = indexOf(id);
-        return index != -1? items[index] : null;
+        return index != -1 ? items[index] : null;
     }
 
     private int indexOf(int id) {
