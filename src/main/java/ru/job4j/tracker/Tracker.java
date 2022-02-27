@@ -50,10 +50,8 @@ public class Tracker {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
-            item.setId(items[index].getId());
+            item.setId(id);
             items[index] = item;
-        } else {
-            System.out.println("id is not found");
         }
         return rsl;
     }
@@ -65,8 +63,6 @@ public class Tracker {
             System.arraycopy(items, index + 1, items, index, size - index - 1);
             items[size - 1] = null;
             size--;
-        } else {
-            System.out.println("id is not found");
         }
         return rsl;
     }
