@@ -7,10 +7,9 @@ public class StartUI {
     public void init(Scanner scanner, Tracker tracker) {
         boolean run = true;
         while (run) {
-            System.out.println("Выберите пункт меню: ");
             showMenu();
-            Scanner input = new Scanner(System.in);
-            int select = Integer.parseInt(input.nextLine());
+            System.out.print("Select: ");
+            int select = Integer.parseInt(scanner.nextLine());
             if (select != 6) {
                 System.out.println("Пользователь выбрал: " + select);
             } else {
