@@ -3,13 +3,11 @@ package ru.job4j.poly;
 public class Bus implements Transport {
 
     @Override
-    public boolean drive() {
-        return false;
+    public void drive() {
     }
 
     @Override
-    public int passangers(int count) {
-        return 0;
+    public void passangers(int count) {
     }
 
     @Override
