@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class StartUITest {
 
     @Test
-            public void WhenAddItem() {
+            public void whenAddItem() {
         String[] answers = {"Test test"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
