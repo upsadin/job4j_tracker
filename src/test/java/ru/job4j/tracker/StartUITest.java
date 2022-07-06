@@ -31,7 +31,7 @@ public class StartUITest {
         String editedName = "New item name";
         Input in = new StubInput(new String[] {"0", Integer.toString(item.getId()), editedName, "1"});
         UserAction[] actions = {
-                new EditAction(),
+                new EditAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -45,7 +45,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(new String[] {"0", Integer.toString(item.getId()), "1"});
         UserAction[] actions = {
-                new DeleteAction(),
+                new DeleteAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
@@ -54,7 +54,7 @@ public class StartUITest {
 
     @Test
     public void whenExit() {
-        Output out = new StubOutput();
+        Output output = new StubOutput();
         Input in = new StubInput(
                 new String[] {"0"}
         );
@@ -62,8 +62,8 @@ public class StartUITest {
         UserAction[] actions = new UserAction[] {
                 new ExitAction()
         };
-        new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu:" + System.lineSeparator()
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(output.toString(), is("Menu:" + System.lineSeparator()
                 + "0. Exit Program" + System.lineSeparator()));
     }
 }
