@@ -99,7 +99,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("New item"));
         Input in = new StubInput(
-                new String[] {"0", "1", "1"}
+                new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[] {
                 new FindItemByIdAction(out), new ExitAction()
@@ -112,11 +112,6 @@ public class StartUITest {
                 + "1. Exit Program" + ln
                 + "=== Find item by id ===" + ln
                 + one + ln
- /*               + "Item {"
-                        + "id=" + String.valueOf(one.getId())
-                        + ", name='" +one.getName() + '\''
-                        + ", created=" + one.getDateTime()
-                        + '}' + ln*/
                 + "Menu:" + ln
                 + "0. Find item by id" + ln
                 + "1. Exit Program" + ln
@@ -130,7 +125,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("Item1"));
         Input in = new StubInput(
-          new String[] {"0", "Item1", "1"}
+          new String[] {"0", one.getName(), "1"}
         );
         UserAction[] actions = new UserAction[] {
           new FindItemByNameAction(out), new ExitAction()
