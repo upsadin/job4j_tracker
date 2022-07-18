@@ -6,20 +6,19 @@ public class UserStore {
         for (User usr : users) {
             if (usr.getUserName().equals(login)) {
                 rsl = usr;
+                break;
             }
         }
-        if (rsl.equals(null)) {
+        if (rsl == null) {
             throw new UserNotFoundException("User not found");
         }
         return rsl;
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        boolean rsl = false;
+        boolean rsl = true;
         if (user.getUserName().length() < 3 || !user.isValid()) {
             throw new UserInvalidException("User is invalid");
-        } else {
-            rsl = true;
         }
         return rsl;
     }
