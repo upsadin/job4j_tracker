@@ -6,8 +6,8 @@ public class JavaNameValidator {
         if (rsl) {
             for (int i = 1; i < name.length(); i++) {
                 int symb = name.codePointAt(i);
-                if (!isSpecialSymbol(symb) && !isUpperLatinLetter(symb) && !isLowerLatinLetter(symb)
-                        && !Character.isDigit(symb)) {
+                if (!isSpecialSymbol(symb) && !isUpperLatinLetter(symb) && !Character.isDigit(symb)
+                        && !isLowerLatinLetter(symb)) {
                     rsl = false;
                     break;
                 }
