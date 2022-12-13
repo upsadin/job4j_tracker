@@ -16,15 +16,6 @@ public class BankService {
     }
 
     public boolean deleteUser(String passport) {
-/*
-        boolean rsl = false;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                users.remove(user);
-                rsl = true;
-            }
-        }
-*/
         return users.remove(new User(passport, "")) != null;
     }
 
