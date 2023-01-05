@@ -1,5 +1,7 @@
 package ru.job4j.early;
 
+import java.util.Arrays;
+
 public class PasswordValidator {
 
     public static String validate(String password) throws IllegalArgumentException {
@@ -9,15 +11,15 @@ public class PasswordValidator {
         if (password.length() < 8 || password.length() > 32) {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
-        if (password.toLowerCase().contains("qwerty")
-                || password.toLowerCase().contains("password")
-                || password.toLowerCase().contains("admin")
-                || password.toLowerCase().contains("user")
-                || password.contains("12345")
-        ) {
+        String[] invalidString = new String[] {
+                "qwerty", "password", "admin", "user", "12345"
+        };
+        for (String strings : invalidString) {
+              if (password.toLowerCase().contains(strings)) {
             throw new IllegalArgumentException(
                     "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
             );
+            }
         }
         int upCase = 0;
         int lowCase = 0;
@@ -35,6 +37,9 @@ public class PasswordValidator {
             }
             if (!Character.isLetterOrDigit(password.charAt(i))) {
                 symb++;
+            }
+            if (upCase > 0 && lowCase > 0 && digit > 0 && symb > 0) {
+                break;
             }
         }
         if (upCase == 0) {
