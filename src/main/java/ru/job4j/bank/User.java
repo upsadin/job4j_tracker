@@ -2,7 +2,13 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс пользователей банковской системы {@link BankService}
+ */
 public class User {
+    /**
+     * приватное хранение паспортных данных и ФИО пользователей
+     */
     private String passport;
     private String username;
 
@@ -11,6 +17,10 @@ public class User {
         this.username = username;
     }
 
+    /**
+     * геттеры и сеттеры для паспорта пользователя и его имени
+     * а также переопределенные equals и hashcode
+     */
     public String getPassport() {
         return passport;
     }

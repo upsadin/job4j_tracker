@@ -2,7 +2,13 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * класс аккаунтов (счетов) пользователей {@link User} банковской системы {@link BankService}
+ */
 public class Account {
+    /**
+     * поля содержат защищенные реквизиты счетов и баланс
+     */
     private String requisite;
     private double balance;
 
