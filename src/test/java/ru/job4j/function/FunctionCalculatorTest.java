@@ -11,7 +11,7 @@ public class FunctionCalculatorTest {
     @Test
     public void whenLinearFunctionThenLinearResults() {
         FunctionCalculator function = new FunctionCalculator();
-        List<Double> result = function.diapason(5, 8, x -> 2 * (double)x + 1);
+        List<Double> result = function.diapason(5, 8, x -> 2 * (double) x + 1);
         List<Double> expected = Arrays.asList(11D, 13D, 15D);
         assertThat(result).containsAll(expected);
     }
@@ -19,7 +19,7 @@ public class FunctionCalculatorTest {
     @Test
     public void whenQuadraticFunctionThenLinearResults() {
         FunctionCalculator function = new FunctionCalculator();
-        List<Double> result = function.diapason(5, 8, x -> (double)x * (double)x + 10);
+        List<Double> result = function.diapason(5, 8, x -> (double) x * (double) x + 10);
         List<Double> expected = Arrays.asList(35D, 46D, 59D);
         assertThat(result).containsAll(expected);
     }
