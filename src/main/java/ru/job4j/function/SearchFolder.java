@@ -5,17 +5,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 public class SearchFolder {
-    public static List<Folder> filterSize(List<Folder> list) {
-        List<Folder> rsl = new ArrayList<>();
-        for (Folder f : list) {
-            if (f.getSize() > 100) {
-                rsl.add(f);
-            }
-        }
-        return rsl;
-    }
-
-    public static List<Folder> filter(List<Folder> list, Predicate<Folder> pred) {
+    public List<Folder> filter(List<Folder> list, Predicate<Folder> pred) {
         List<Folder> rsl = new ArrayList<>();
         for (Folder f : list) {
             if (pred.test(f)) {
