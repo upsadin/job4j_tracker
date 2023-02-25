@@ -50,7 +50,7 @@ public class Analyze {
                 .flatMap(p -> p.subjects().stream())
                 .collect(Collectors.groupingBy(
                         Subject::name,
-                        Collectors.summingInt(s -> s.score())
+                        Collectors.summingInt(Subject::score)
                 )).entrySet().stream()
                 .map(m -> new Tuple(
                         m.getKey(),
