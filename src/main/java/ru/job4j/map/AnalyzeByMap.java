@@ -37,8 +37,9 @@ public class AnalyzeByMap {
         int scoreSum = 0;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                temp.put(subject.name(), temp.getOrDefault(subject.name(), 0)
-                + subject.score());
+/*                temp.put(subject.name(), temp.getOrDefault(subject.name(), 0)
+                + subject.score());*/
+                temp.merge(subject.name(), subject.score(), (oldV, newV) -> oldV + newV);
             }
         }
         List<Label> rsl = new ArrayList<>();
@@ -70,8 +71,7 @@ public class AnalyzeByMap {
         int scoreSum = 0;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                temp.put(subject.name(), temp.getOrDefault(subject.name(), 0)
-                        + subject.score());
+                temp.merge(subject.name(), subject.score(), (oldV, newV) -> oldV + newV);
             }
         }
         List<Label> rsl = new ArrayList<>();
