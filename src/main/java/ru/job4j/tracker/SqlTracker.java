@@ -97,7 +97,8 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     rsl.add(new Item(
                             resultSet.getInt("id"),
-                            resultSet.getString("name")
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
                     ));
                 }
             }
@@ -116,7 +117,8 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     rsl.add(new Item(
                             resultSet.getInt("id"),
-                            resultSet.getString("name")
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
                     ));
                 }
             }
@@ -128,13 +130,14 @@ public class SqlTracker implements Store {
 
     @Override
     public Item findById(int id) {
-        Item rsl = new Item();
+        Item rsl = null;
         try (PreparedStatement statement = cn.prepareStatement("SELECT * FROM items WHERE id = ?")) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    rsl.setId(id);
-                    rsl.setName(resultSet.getString("name"));
+                    rsl = new Item(id,
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime());
                 }
             }
         } catch (Exception e) {
