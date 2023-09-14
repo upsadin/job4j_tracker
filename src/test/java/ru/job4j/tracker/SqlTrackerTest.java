@@ -80,6 +80,19 @@ public class SqlTrackerTest {
     }
 
     @Test
+    public void whenDeleteItemAndCheckBD() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        Item item3 = new Item("item3");
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.delete(item1.getId());
+        assertThat(tracker.findAll()).hasSize(2);
+    }
+
+    @Test
     public void whenfindAllItems() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 = new Item("item1");

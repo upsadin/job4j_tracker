@@ -55,7 +55,7 @@ public class SqlTracker implements Store {
                     item.setId(genId.getInt(1));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return item;
@@ -71,7 +71,7 @@ public class SqlTracker implements Store {
             statement.setTimestamp(2, Timestamp.valueOf(item.getDateTime()));
             statement.setInt(3, id);
             rsl = statement.executeUpdate() > 0;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return rsl;
@@ -84,7 +84,7 @@ public class SqlTracker implements Store {
         )) {
             statement.setInt(1, id);
             statement.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -98,7 +98,7 @@ public class SqlTracker implements Store {
                     rsl.add(newItem(resultSet));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return rsl;
@@ -114,7 +114,7 @@ public class SqlTracker implements Store {
                     rsl.add(newItem(resultSet));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return rsl;
@@ -130,13 +130,13 @@ public class SqlTracker implements Store {
                     rsl = newItem(resultSet);
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return rsl;
     }
 
-    private Item newItem(ResultSet rs) throws Exception {
+    private Item newItem(ResultSet rs) throws SQLException {
         return new Item(rs.getInt("id"),
                     rs.getString("name"),
                     rs.getTimestamp("created").toLocalDateTime());
