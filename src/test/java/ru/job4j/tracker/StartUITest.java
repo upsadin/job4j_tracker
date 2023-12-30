@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.action.*;
 
 import java.util.List;
 
@@ -18,8 +19,8 @@ public class StartUITest {
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(
-                new CreateAction(output),
-                new ExitAction()
+                new Create(output),
+                new Exit()
         );
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findAll().get(0).getName(), is("Item name"));
@@ -33,8 +34,8 @@ public class StartUITest {
         String editedName = "New item name";
         Input in = new StubInput(new String[] {"0", Integer.toString(item.getId()), editedName, "1"});
         List<UserAction> actions = List.of(
-                new EditAction(output),
-                new ExitAction()
+                new Edit(output),
+                new Exit()
         );
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(editedName));
@@ -47,8 +48,8 @@ public class StartUITest {
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(new String[] {"0", Integer.toString(item.getId()), "1"});
         List<UserAction> actions = List.of(
-                new DeleteAction(output),
-                new ExitAction()
+                new Delete(output),
+                new Exit()
         );
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
@@ -62,7 +63,7 @@ public class StartUITest {
         );
         MemTracker tracker = new MemTracker();
         List<UserAction> actions = List.of(
-                new ExitAction()
+                new Exit()
         );
         new StartUI(output).init(in, tracker, actions);
         assertThat(output.toString(), is("Menu:" + System.lineSeparator()
@@ -79,7 +80,7 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         List<UserAction> actions = List.of(
-                new EditAction(out), new ExitAction()
+                new Edit(out), new Exit()
         );
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -104,7 +105,7 @@ public class StartUITest {
                 new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         List<UserAction> actions = List.of(
-                new FindItemByIdAction(out), new ExitAction()
+                new FindItemById(out), new Exit()
             );
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -130,7 +131,7 @@ public class StartUITest {
           new String[] {"0", one.getName(), "1"}
         );
         List<UserAction> actions = List.of(
-          new FindItemByNameAction(out), new ExitAction()
+          new FindItemByName(out), new Exit()
         );
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -156,7 +157,7 @@ public class StartUITest {
                 new String[] {"0", "1"}
         );
         List<UserAction> actions = List.of(
-          new ShowAllAction(out), new ExitAction()
+          new ShowAll(out), new Exit()
         );
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -181,7 +182,7 @@ public class StartUITest {
                 new String[]{"1", "0"}
         );
         List<UserAction> actions = List.of(
-                new ExitAction()
+                new Exit()
         );
         new StartUI(out).init(input, tracker, actions);
         String ln = System.lineSeparator();
